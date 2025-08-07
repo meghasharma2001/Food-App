@@ -1,0 +1,9 @@
+// how can admin can add the new product , edit the details , admin can see all the orders in application , all users who are register in this app (complete track of this app)
+
+// go to localhost:8000/admin  ==> if user1 have admin access then it redirect to admin panel , else user1 redirecteed to the home page (only specific user have admin panel access)
+
+
+/// admin panel ==> userList , pizzalist , addd new pizza , orderlist (change order status to delivered ect that show on user panel orderstatus)
+
+// 1st give any one user aadmin access in mongodbdb (manually write isAdmin "true")
+// create adminScreen.jsx

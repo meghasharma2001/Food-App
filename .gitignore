@@ -1,0 +1,14 @@
+# Node.js
+node_modules/
+.env
+README.md
+# Build files
+dist/
+build/
+
+# Logs
+*.log
+
+# IDE/editor folders
+.vscode/
+.idea/
