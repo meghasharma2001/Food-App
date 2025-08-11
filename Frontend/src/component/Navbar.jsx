@@ -28,16 +28,16 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
 
-  // useEffect(() => {
-  //   dispatch(getAllUserOrders())
-  // }, [])
-  // const orders = useSelector(state => state.getAllUserOrdersReducerstore)
+  useEffect(() => {
+    dispatch(getAllUserOrders())
+  }, [])
+  const orders = useSelector(state => state.getAllUserOrdersReducerstore)
 
-  // const { error, loading, userorders } = orders
+  const { error, loading, userorders } = orders
 
-  // console.log(error)
+  console.log(error)
 
-  // const isvaliduser = (error === "jwt expired") ? false : true
+  const isvaliduser = (error === "jwt expired") ? false : true
 
 
   return (
@@ -73,7 +73,7 @@ const Navbar = () => {
 
 
                 {
-                 (loginstate) ?
+                 isvaliduser && (loginstate) ?
                     <div>
                       <Link className="navi nav-link forflex" onClick={() => setisOpen(!isOpen)} style={{}}>{loginstate.name}{isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}</Link>
 

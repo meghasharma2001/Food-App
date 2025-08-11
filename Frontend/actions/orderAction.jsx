@@ -71,7 +71,7 @@ export const placeOrder = (subtotal, shippingDetails) => async (dispatch, getSta
 
                 const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js")
                 if (!res) {
-                    alert("error at razorpay screen loading")
+                    alert("error at razorpay screen loading " , res)
                     return
                 }
 
