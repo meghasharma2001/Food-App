@@ -37,7 +37,7 @@ const Navbar = () => {
 
   console.log(error)
 
-  const isvaliduser = (error === "jwt expired") ? false : true
+  const isvaliduser = (error === "jwtt expired" ||error === "jwtv expired" ||error === "jwtu expired" || error === "jwte expired"  ) ? false : true
 
 
   return (
