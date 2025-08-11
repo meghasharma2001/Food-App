@@ -9,7 +9,7 @@ const varifytoken = async(req,res,next) => {
 
     if(!token)
     {
-          res.status(401).json({error:"jwt expired"})
+          res.status(401).json({error:"jwtt expired"})
           return 
     }
 
@@ -17,7 +17,7 @@ const varifytoken = async(req,res,next) => {
 
     if(!varifytoken)
     {
-          return res.json({error:"jwt expired"})
+          return res.json({error:"jwtv expired"})
     }
 
     const userid = varifytoken.userid;
@@ -26,7 +26,7 @@ const varifytoken = async(req,res,next) => {
 
     if(!user || !user.tokenv.includes(token)) 
     {
-        return res.json({error:"jwt expired"})
+        return res.json({error:"jwtu expired"})
     }
 
 
@@ -40,7 +40,7 @@ const varifytoken = async(req,res,next) => {
     catch(e)
     {
         console.log("error in varify token")
-        res.json({error:"jwt expired"})
+        res.json({error:"jwte expired"})
     }
 
 
