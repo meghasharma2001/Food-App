@@ -73,7 +73,7 @@ catch(e)
 
 
 
-module.exports.logincontroller = async (req, res) => {
+module.exports.logincontroller = async(req, res) => {
 
     try {
 
@@ -81,7 +81,7 @@ module.exports.logincontroller = async (req, res) => {
         const { email, password } = req.body
 
         if (!email || !password) {
-            return res.json({ "error": "enter both fields" })
+            return res.json({ error: "enter both fields" })
         }
 
 
@@ -94,7 +94,8 @@ module.exports.logincontroller = async (req, res) => {
 
    
 
-        const resu = bcrypt.compare(password, loginuser.password)
+        const resu = await bcrypt.compare(password, loginuser.password)
+
 
         if (!resu) {
             return res.json({ error : "invalid credentials" })
