@@ -63,13 +63,13 @@ export const placeOrder = (subtotal, shippingDetails) => async (dispatch, getSta
 
         const newamount = objres.amount
 
-  
+//   https://checkout.razorpay.com/v1/checkout.js
 
         if (!objres.error && !(objres.error === "already paid for this item")) {
 
             const handleRazorpayScreen = async (newamount) => {
 
-                const res = await loadScript("https:/checkout.razorpay.com/v1/checkout.js")
+                const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js")
                 if (!res) {
                     alert("error at razorpay screen loading")
                     return
