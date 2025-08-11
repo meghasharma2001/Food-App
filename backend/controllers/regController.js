@@ -14,6 +14,10 @@ try{
         return res.status(401).json({ error: "give all fields" })
     }
 
+
+    if(password.length <6){
+            return res.status(401).json({ error: "password must be 6 char long" })
+    }
     const alreadyreg = await regmodel.findOne({email})
 
     if(alreadyreg)
@@ -84,6 +88,9 @@ module.exports.logincontroller = async(req, res) => {
             return res.json({ error: "enter both fields" })
         }
 
+        if(password.length <6){
+            return res.status(401).json({ error: "password must be 6 char long" })
+    }
 
         const loginuser = await regmodel.findOne({ email })
 
