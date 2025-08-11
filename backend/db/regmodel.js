@@ -12,7 +12,7 @@ const regSchema = new mongoose.Schema({
     password : {
         type:String,
         require:true,
-        minlength:[, "password must be 6 char long"]
+        minlength:[6, "password must be 6 char long"]
     },
 
     isadmin:{
