@@ -1,10 +1,11 @@
 
-
+require("dotenv").config()
 const mongoose = require("mongoose")
 
+const user = process.env.MONGO_USER
+const password = process.env.MONGO_PASSWORD
 
-
-var mongoURL = "mongodb://localhost:27017/PizzaDB"
+var mongoURL = `mongodb+srv://${user}:${password}@foodcluster.nsixzdd.mongodb.net/`
 
 mongoose.connect(mongoURL )
 var db = mongoose.connection ;  
