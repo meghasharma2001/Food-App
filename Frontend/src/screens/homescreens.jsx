@@ -38,7 +38,7 @@ const homescreens= () =>{
     
 
 
- <div className="row forflex mediaa " style={{marginTop:"30px"}}> 
+ <div className="row mediaa " style={{marginTop:"30px"}}> 
 {
 
     loading ? <h1><Loading/></h1> : error ? <Error error={error} />  : (

@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken")
 const regmodel = require("../db/regmodel")
+require("dotenv").config()
 
 const varifytoken = async(req,res,next) => {
 
@@ -12,7 +13,7 @@ const varifytoken = async(req,res,next) => {
           return 
     }
 
-    const varifytoken = jwt.verify(token , "mysecretkey")
+    const varifytoken = jwt.verify(token , process.env.JWT_SECRET)
 
     if(!varifytoken)
     {

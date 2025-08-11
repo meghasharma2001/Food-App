@@ -1,7 +1,7 @@
 # Node.js
 node_modules/
 .env
-README.md
+README.md/
 # Build files
 dist/
 build/

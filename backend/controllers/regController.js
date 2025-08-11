@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const regmodel = require("../db/regmodel")
+require("dotenv").config()
 
 module.exports.regiController = async (req, res) => {
 
@@ -27,7 +28,7 @@ try{
 
  
 
-    const tokenvar = jwt.sign({ userid: newuser._id.toString() }, "mysecretkey", { expiresIn: "1h" })
+    const tokenvar = jwt.sign({ userid: newuser._id.toString() }, process.env.JWT_SECRET, { expiresIn: "1h" })
 
     const cookieval = res.cookie("Cookiename", tokenvar, {
         maxAge: 5 * 60 * 60 * 1000,
@@ -101,7 +102,7 @@ module.exports.logincontroller = async (req, res) => {
 
 
 
-        const token = jwt.sign({ userid: loginuser._id.toString() }, "mysecretkey", { expiresIn: "1h" })
+        const token = jwt.sign({ userid: loginuser._id.toString() }, process.env.JWT_SECRET, { expiresIn: "1h" })
 
         res.cookie("Cookiename", token, {
 
