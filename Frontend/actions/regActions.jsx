@@ -4,7 +4,7 @@ export const registerAction = (user) => async dispatch => {
 
     try{
 
-        const resp = await fetch("http://localhost:8000/api/auth/reg" ,{
+        const resp = await fetch("https://food-app-zteg.onrender.com/api/auth/reg" ,{
             method : "POST",
             headers:{
                 "Content-Type" : "application/json"
@@ -42,7 +42,7 @@ export const loginAction = (user) => async dispatch =>{
 
     try{
 
-        const resp = await fetch("http://localhost:8000/api/auth/login" , {
+        const resp = await fetch("https://food-app-zteg.onrender.com/api/auth/login" , {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -79,7 +79,7 @@ export const loginAction = (user) => async dispatch =>{
 export const logoutuser = (id) => async dispatch =>{
 
     try{
-        const deleteusers = await fetch(`http://localhost:8000/api/auth/deleteUser/${id}`, {
+        const deleteusers = await fetch(`https://food-app-zteg.onrender.com/api/auth/deleteUser/${id}`, {
             method:"DELETE",
             credentials:"include"
         })
@@ -108,7 +108,7 @@ export const getAllUsersAdminAction = () => async dispatch =>{
     dispatch({type:"GET_ALL_USERS_ADMIN_REQ"})
 
     try{
-        const allusersadmin = await fetch("http://localhost:8000/api/admin/getAllUsersAdmin", {credentials:"include"})
+        const allusersadmin = await fetch("https://food-app-zteg.onrender.com/api/admin/getAllUsersAdmin", {credentials:"include"})
 
         const objusers = await allusersadmin.json()
 
@@ -132,7 +132,7 @@ export const deleteUserAdminAction = (id) => async dispatch =>{
  
 
     try{
-        const deleteusersadmin = await fetch(`http://localhost:8000/api/admin/deleteuseradmin/${id}`, {
+        const deleteusersadmin = await fetch(`https://food-app-zteg.onrender.com/api/admin/deleteuseradmin/${id}`, {
             method:"DELETE",
             credentials:"include"
         })
@@ -157,7 +157,7 @@ export const deleteUserAdminAction = (id) => async dispatch =>{
 export const logoutUserAllDevicesAdmin = (id) =>async dispatch =>{
 
     try{
-const resp = await fetch(`http://localhost:8000/api/admin/logoutUserFromAllDevicesAdmin/${id}`,{
+const resp = await fetch(`https://food-app-zteg.onrender.com/api/admin/logoutUserFromAllDevicesAdmin/${id}`,{
     method:"PUT",
     credentials:"include",
       headers: {

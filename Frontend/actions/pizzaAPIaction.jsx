@@ -8,7 +8,7 @@ export const getAllpizzas = () => async dispatch =>{
    
 
         try{
-            const resp = await fetch("http://localhost:8000/api/getpizza")
+            const resp = await fetch("https://food-app-zteg.onrender.com/api/getpizza")
             const jsonres = await resp.json()
          
             dispatch({type:"GET_PIZZA_SUCCESS" , payload: jsonres})
@@ -26,7 +26,7 @@ export const getPizzaById = (id) => async dispatch =>{
     try{
 
 
-        const jsonres = await fetch(`http://localhost:8000/api/getpizza/${id}`,{
+        const jsonres = await fetch(`https://food-app-zteg.onrender.com/api/getpizza/${id}`,{
             credentials:"include"
         })
 
@@ -52,7 +52,7 @@ export const updatePizzaById = (updateditem)=> async dispatch => {
 
     try{
 
-        const jsonres = await fetch("http://localhost:8000/api/updatepizza",{
+        const jsonres = await fetch("https://food-app-zteg.onrender.com/api/updatepizza",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -89,7 +89,7 @@ export const addNewPizzaAction = (addnewPizzaobj) => async dispatch => {
     dispatch({type:"STORE_NEW_PIZZA_REQ"})
 
     try{
-        const resp = await fetch("http://localhost:8000/api/admin/addnewpizza" , {
+        const resp = await fetch("https://food-app-zteg.onrender.com/api/admin/addnewpizza" , {
             method:"POST",
             headers:{
                 "Content-Type" : "application/json"
@@ -131,7 +131,7 @@ export const deletePizzaById = (id)=> async dispatch => {
 
     try{
 
-        const jsonres = await fetch(`http://localhost:8000/api/deletepizza/${id}`,{
+        const jsonres = await fetch(`https://food-app-zteg.onrender.com/api/deletepizza/${id}`,{
             method:"DELETE",
             headers:{
                 "Content-Type":"application/json"

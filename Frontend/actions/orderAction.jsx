@@ -45,7 +45,7 @@ export const placeOrder = (subtotal, shippingDetails) => async (dispatch, getSta
 
 
 
-        const jsonres = await fetch("http://localhost:8000/api/razorpay/orders", {
+        const jsonres = await fetch("https://food-app-zteg.onrender.com/api/razorpay/orders", {
             method: "POST",
             maxBodyLength: "Infinity",
             headers: {
@@ -101,7 +101,7 @@ export const placeOrder = (subtotal, shippingDetails) => async (dispatch, getSta
                         
                     
 
-                        const verifyres = await fetch("http://localhost:8000/api/razorpay/verify-payment", {
+                        const verifyres = await fetch("https://food-app-zteg.onrender.com/api/razorpay/verify-payment", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
@@ -199,7 +199,7 @@ export const paymentfetch = (e, screenPayId) => async (dispatch) => {
 
     try {
 
-        const paydetail = await fetch(`http://localhost:8000/api/razorpay/payment/${paymentid}`,{credentials:"include"});
+        const paydetail = await fetch(`https://food-app-zteg.onrender.com/api/razorpay/payment/${paymentid}`,{credentials:"include"});
 
         const objres = await paydetail.json()
 
@@ -231,7 +231,7 @@ export const getAllUserOrders = () => async (dispatch, getState) => {
         const userid = curruser._id
 
 
-        const jsonres = await fetch(`http://localhost:8000/api/razorpay/getAllOrders/${userid}`, {
+        const jsonres = await fetch(`https://food-app-zteg.onrender.com/api/razorpay/getAllOrders/${userid}`, {
             method:"GET",
             credentials:"include"
         })
@@ -266,7 +266,7 @@ export const getAllordersAdmin = () => async dispatch => {
     dispatch({ type: "get_all_admin_orders_req" })
 
     try {
-        const resp = await fetch("http://localhost:8000/api/admin/getAllOrdersAdmin",{
+        const resp = await fetch("https://food-app-zteg.onrender.com/api/admin/getAllOrdersAdmin",{
             credentials:"include"
         });
 
@@ -293,7 +293,7 @@ export const updateOrdersStatusAction = (id) => async dispatch => {
 
     try{
 
-        const resp = await fetch(`http://localhost:8000/api/admin/updateorderStatus/${id}`,{
+        const resp = await fetch(`https://food-app-zteg.onrender.com/api/admin/updateorderStatus/${id}`,{
             method:"PATCH",
             credentials:"include"
         }
@@ -304,7 +304,7 @@ export const updateOrdersStatusAction = (id) => async dispatch => {
      
 
        
-        const neworders = await fetch("http://localhost:8000/api/admin/getAllOrdersAdmin",{credentials:"include"})
+        const neworders = await fetch("https://food-app-zteg.onrender.com/api/admin/getAllOrdersAdmin",{credentials:"include"})
 
         const neword = await neworders.json()
   
