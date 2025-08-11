@@ -33,8 +33,8 @@ try{
     const cookieval = res.cookie("Cookiename", tokenvar, {
         maxAge: 5 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: "lax",
-        secure: false
+        sameSite:"None",
+        secure: true
 
 
 
@@ -107,9 +107,9 @@ module.exports.logincontroller = async (req, res) => {
         res.cookie("Cookiename", token, {
 
             maxAge: 5 * 60 * 60 * 1000,
-            sameSite: "lax", 
+            sameSite: "None", 
             httpOnly: true, 
-            secure: false
+            secure: true
         })
 
         loginuser.tokenv.push(token)
