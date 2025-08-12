@@ -50,17 +50,20 @@ const Navbar = () => {
           <Link to="/" className="navbar-brand nav-link med" style={{ marginRight: "2vw", fontWeight: "bold", justifyContent: "flex-start" }}>FoodApp</Link>
 
 
-          <div className="forflex med" style={{ display: "flex", justifyContent: "flex-end", width: "5vw", alignItems: "center" }}>
+          <div className="forflex med" style={{ display: "flex", justifyContent: "flex-end", width: "70vw", alignItems: "center" }}>
 
-            <input value={userTyped} onChange={(e) => setuserTyped(e.target.value)} /> <button onClick={() => dispatch(searchAction(userTyped))} style={{ margin: "0px 2vw 0px 5px" }} className="regbtn">search</button>
+            <input value={userTyped} onChange={(e) => setuserTyped(e.target.value)} style={{ width: "20vw" }} placeholder="Enter text..." /> 
+            
+            <button onClick={() => dispatch(searchAction(userTyped))} style={{ margin: "0px 2vw 0px 5px" ,width: "5vw"}} className="regbtn">search</button>
 
+   </div>
 
-
-            {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={()=>setburger(true)}>
-              <span class="navbar-toggler-icon"></span>
-            </button> */}
-
-            <div className="collapse navbar-collapse" id="navbarSupportedContent" >
+            
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         
 
               <ul className="navbar-nav ml-auto  mr-auto">
 
@@ -92,7 +95,7 @@ const Navbar = () => {
                       <li><Link className="nav-link navi" to="/register"  >Register</Link></li> </>)
                 }
               </ul>
-            </div>
+         
 
 
           </div>
