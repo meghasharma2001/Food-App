@@ -2,9 +2,8 @@ import Loader from "../assets/loader.gif"
 const Loading = () => {
     return (
         <>
-            <div>
-                <img src={Loader} alt="Loading.." style={{width:"200px" , height:"200px" ,  margin:"20px 45vw",
-            color:"lightgrey", display:"flex" , justifyContent:"center" , alignItems:"center"}}/>
+            <div  style={{height:"100vh", display:"flex" , justifyContent:"center" , marginTop:"10vh"}}>
+                <img src={Loader} alt="Loading.." style={{width:"100px" , height:"100px" }}/>
             </div>
         </>
     )
