@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const [isOpen, setisOpen] = useState(false)
   const [userTyped, setuserTyped] = useState("")
-  const [burger, setburger] = useState(true)
+  const [burger, setburger] = useState(false)
 
 
 
@@ -56,9 +56,9 @@ const Navbar = () => {
 
 
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+            {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={()=>setburger(true)}>
               <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> */}
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent" >
 
@@ -73,7 +73,7 @@ const Navbar = () => {
 
 
                 {
-                 isvaliduser && (loginstate) ?
+                  isvaliduser && (loginstate) ?
                     <div>
                       <Link className="navi nav-link forflex" onClick={() => setisOpen(!isOpen)} style={{}}>{loginstate.name}{isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}</Link>
 
