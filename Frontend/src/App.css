@@ -89,6 +89,10 @@ input {
     align-items: center;
   
   }
+
+  .serbtn{
+    width:8vw;
+  }
 }
 
 .serbtn{
