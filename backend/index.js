@@ -27,7 +27,7 @@ app.use(express.json())
 app.use(cors({
 
  origin: "https://food-app-mu-nine.vercel.app",
-    methods: ['GET','POST','PUT','DELETE','PATCH'],
+  methods: ['GET','POST','PUT','DELETE','PATCH'],
   //  methods: 'GET,POST,PUT,DELETE',
   credentials: true 
 }))

@@ -1,9 +1,10 @@
+import Loader from "../assets/loader.gif"
 const Loading = () => {
     return (
         <>
-            <div class="spinner-border" role="status" style={{width:"200px" , height:"200px" ,   
-            color:"lightgrey", display:"flex" , justifyContent:"center" , alignItems:"center"}}>
-                <span class="sr-only">Loading...</span>
+            <div>
+                <img src={Loader} alt="Loading.." style={{width:"200px" , height:"200px" ,  margin:"20px 45vw",
+            color:"lightgrey", display:"flex" , justifyContent:"center" , alignItems:"center"}}/>
             </div>
         </>
     )
