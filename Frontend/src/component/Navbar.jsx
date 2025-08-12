@@ -37,7 +37,7 @@ const Navbar = () => {
 
   console.log(error)
 
-  const isvaliduser = (error === "jwtt expired" ||error === "jwtv expired" ||error === "jwtu expired" || error === "jwte expired"  ) ? false : true
+  const isvaliduser = (error === "jwtt expired" || error === "jwtv expired" || error === "jwtu expired" || error === "jwte expired") ? false : true
 
 
   return (
@@ -52,50 +52,50 @@ const Navbar = () => {
 
           <div className="forflex med" style={{ display: "flex", justifyContent: "flex-end", width: "70vw", alignItems: "center" }}>
 
-            <input value={userTyped} onChange={(e) => setuserTyped(e.target.value)} style={{ width: "20vw" }} placeholder="Enter text..." /> 
-            
-            <button onClick={() => dispatch(searchAction(userTyped))} style={{ margin: "0px 2vw 0px 5px" ,width: "5vw"}} className="regbtn">search</button>
+            <input value={userTyped} onChange={(e) => setuserTyped(e.target.value)} style={{ width: "20vw" }} placeholder="Enter text..." />
 
-   </div>
+            <button onClick={() => dispatch(searchAction(userTyped))} style={{ margin: "0px 2vw 0px 5px" }} className="serbtn">search</button>
 
-            
+          </div>
+
+
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-   <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         
-
-              <ul className="navbar-nav ml-auto  mr-auto">
+          <div class="collapse navbar-collapse forflex" id="navbarSupportedContent">
 
 
+            <ul className="navbar-nav ml-auto  mr-auto">
 
 
-                <li className="nav-item ">
-                  <Link className="nav-link navi" to="/cart">Cart{cartstate?.length}</Link>
-                </li>
 
 
-                {
-                  isvaliduser && (loginstate) ?
-                    <div>
-                      <Link className="navi nav-link forflex" onClick={() => setisOpen(!isOpen)} style={{}}>{loginstate.name}{isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}</Link>
-
-                      {isOpen && (
-                        <div style={{ display: "flex", flexDirection: "column", textDecoration: "none" }} >
-                          <Link className="nav-link" to="/orders">Orders</Link>
-                          <Link className="nav-link" to="/" onClick={() => dispatch(logoutuser(loginstate._id))}>Logout</Link>
-                        </div>)
-                      }
-                    </div>
+              <li className="nav-item ">
+                <Link className="nav-link navi" to="/cart">Cart{cartstate?.length}</Link>
+              </li>
 
 
-                    : (<><li className="nav-item ">
-                      <Link className="nav-link navi" to="/login" >Login</Link>
-                    </li>
-                      <li><Link className="nav-link navi" to="/register"  >Register</Link></li> </>)
-                }
-              </ul>
-         
+              {
+                isvaliduser && (loginstate) ?
+                  <div>
+                    <Link className="navi nav-link forflex" onClick={() => setisOpen(!isOpen)} style={{}}>{loginstate.name}{isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}</Link>
+
+                    {isOpen && (
+                      <div style={{ display: "flex", flexDirection: "column", textDecoration: "none" }} >
+                        <Link className="nav-link" to="/orders">Orders</Link>
+                        <Link className="nav-link" to="/" onClick={() => dispatch(logoutuser(loginstate._id))}>Logout</Link>
+                      </div>)
+                    }
+                  </div>
+
+
+                  : (<><li className="nav-item ">
+                    <Link className="nav-link navi" to="/login" >Login</Link>
+                  </li>
+                    <li><Link className="nav-link navi" to="/register"  >Register</Link></li> </>)
+              }
+            </ul>
+
 
 
           </div>

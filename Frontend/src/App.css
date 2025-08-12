@@ -91,6 +91,14 @@ input {
   }
 }
 
+.serbtn{
+   width:5vw; 
+ margin-left :10vw;
+border-radius:10px;
+ background-color:rgb(230, 184, 98) ;
+  font-family:cursive;
+}
+
 @media only screen and (max-width:990px){
   .mediaa{
     display: flex;
@@ -102,6 +110,12 @@ input {
 
   .regbtn{
     font-size: smaller;
+    /* width:10vw */
+  }
+
+  .serbtn{
+      font-size: smaller;
+    /* width:10vw */
   }
 
 }
@@ -122,6 +136,10 @@ align-items: center;
  
     width: 12vw;
     
+  }
+
+  .serbtn{
+    width: 12vw;
   }
 }
 
