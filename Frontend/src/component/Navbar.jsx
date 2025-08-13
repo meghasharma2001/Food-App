@@ -50,7 +50,7 @@ const Navbar = () => {
           <Link to="/" className="navbar-brand nav-link med" style={{ marginRight: "2vw", fontWeight: "bold", justifyContent: "flex-start" }}>FoodApp</Link>
 
 
-          <div className="forflex med" style={{ display: "flex", justifyContent: "flex-end", width: "70vw", alignItems: "center" }}>
+          <div className="forflex med serdiv" style={{ display: "flex", justifyContent: "flex-end",  alignItems: "center" }}>
 
             <input value={userTyped} onChange={(e) => setuserTyped(e.target.value)} style={{ width: "20vw" }} placeholder="Enter text..." />
 

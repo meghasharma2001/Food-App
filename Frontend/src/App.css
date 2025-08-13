@@ -103,6 +103,10 @@ border-radius:10px;
   font-family:cursive;
 }
 
+.serdiv{
+  width:70vw;
+}
+
 @media only screen and (max-width:990px){
   .mediaa{
     display: flex;
@@ -120,6 +124,10 @@ border-radius:10px;
   .serbtn{
       font-size: smaller;
     width:10vw
+  }
+
+  .serdiv{
+    width:30vw
   }
 
 }
