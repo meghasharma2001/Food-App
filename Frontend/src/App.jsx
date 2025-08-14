@@ -10,6 +10,7 @@ import './index.css'
 
 import { useSelector } from "react-redux";
 
+import Footer from "./component/footer";
 import Homescreens from "./screens/homescreens";
 import Cartscreen from "./screens/cartScreen"
 import Login from "./screens/Login";
@@ -76,6 +77,8 @@ const App = () =>{
 
       
     </Routes>
+
+    <Footer/>
     </BrowserRouter>
     
     </>
