@@ -52,7 +52,7 @@ const homescreens= () =>{
             </div>
 
         </div>
-}) : <h1 style={{textAlign:"center" , color:"rgb(7, 216, 244)"}}>Could not find </h1>
+}) : <h1 style={{textAlign:"center" , color:"rgb(7, 216, 244)", marginTop:"26vh"}}>Could not find </h1>
 )
 }
 

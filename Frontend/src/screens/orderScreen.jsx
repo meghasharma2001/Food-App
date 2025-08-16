@@ -30,10 +30,10 @@ const orderspage = () => {
     <>
       <h1 style={{ textAlign: "center" }}> MY ORDERS </h1>
       {loading && <Loading />}
-      {error && <Error error={error} />}
+      {error && <Error error={error} /> }
 
 
-      <div>
+      <div style={{marginBottom: error ? "29vh" : "0px"}}>
         {Array.isArray(userorders) && userorders.length > 0 && userorders.map((i) => {
           return <div className="ordermed">
 
