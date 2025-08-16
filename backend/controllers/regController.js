@@ -3,9 +3,10 @@ const jwt = require("jsonwebtoken")
 const regmodel = require("../db/regmodel")
 require("dotenv").config()
 
-
-
 const validator = require("validator");
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 module.exports.regiController = async (req, res) => {
 
     try {
@@ -19,7 +20,7 @@ module.exports.regiController = async (req, res) => {
 
            console.log(validator.isEmail(email), "my validator ");
         
-                  if (!validator.isEmail(email)) {
+   if (!emailRegex.test(email)) {
     return res.status(400).json({ error: "Invalid Email" });
   }
 
@@ -99,10 +100,9 @@ module.exports.logincontroller = async (req, res) => {
         
            console.log(validator.isEmail(email), "my validator ");
         
-                  if (!validator.isEmail(email)) {
+    if (!emailRegex.test(email)) {
     return res.status(400).json({ error: "Invalid Email" });
   }
-
 
 
         if (password.length < 6) {
@@ -158,6 +158,7 @@ module.exports.logincontroller = async (req, res) => {
             success: true,
             logincreds: curruser,
             tokenc: req.cookies.Cookiename,
+            valid:validator.isEmail(email)
            
         })
 
