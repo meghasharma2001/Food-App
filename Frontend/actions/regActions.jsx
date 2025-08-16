@@ -65,7 +65,7 @@ export const loginAction = (user) => async dispatch =>{
 
         localStorage.setItem("curruser" , JSON.stringify(objres.logincreds))
 
-        // window.location.href = "/"
+        window.location.href = "/"
         }
     }
     catch(e){

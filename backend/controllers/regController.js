@@ -158,7 +158,7 @@ module.exports.logincontroller = async (req, res) => {
             success: true,
             logincreds: curruser,
             tokenc: req.cookies.Cookiename,
-            valid:validator.isEmail(email)
+          
            
         })
 
