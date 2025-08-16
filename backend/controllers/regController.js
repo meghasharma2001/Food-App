@@ -5,10 +5,10 @@ require("dotenv").config()
 
 const validator = require("validator");
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 
 module.exports.regiController = async (req, res) => {
-
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     try {
         const { name, email, password } = req.body
 
@@ -86,6 +86,8 @@ module.exports.regiController = async (req, res) => {
 
 module.exports.logincontroller = async (req, res) => {
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
     try {
 
 
@@ -95,7 +97,7 @@ module.exports.logincontroller = async (req, res) => {
             return res.json({ error: "enter both fields" })
         }
 
-        const issemail =   validator.validate(email)
+        
 
         
            console.log(validator.isEmail(email), "my validator ");
