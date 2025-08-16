@@ -6,84 +6,83 @@ const validator = require("email-validator")
 
 module.exports.regiController = async (req, res) => {
 
-try{
-    const { name, email, password } = req.body
+    try {
+        const { name, email, password } = req.body
 
 
 
-    if (!name || !email || !password) {
-        return res.status(401).json({ error: "give all fields" })
-    }
+        if (!name || !email || !password) {
+            return res.status(401).json({ error: "give all fields" })
+        }
 
-      console.log(validator.validate(email) , "my validator ");
+        console.log(validator.validate(email), "my validator ");
 
-      if (!validator.validate(email)) {
-    return res.status(400).json({ error: "Invalid Email" });
-  }
 
-    if(password.length <6){
+        if(!validator.validate(email)){
+            return res.status(400).json({ error: "Invalid Email" });
+        }
+
+        if (password.length < 6) {
             return res.status(401).json({ error: "password must be 6 char long" })
+        }
+        const alreadyreg = await regmodel.findOne({ email })
+
+        if (alreadyreg) {
+            return res.json({ error: 'user already registered' })
+        }
+        const hashpass = await bcrypt.hash(password, 10)
+
+        const newuser = await regmodel.create({ name, email, password: hashpass })
+
+
+
+
+
+        const tokenvar = jwt.sign({ userid: newuser._id.toString() }, process.env.JWT_SECRET, { expiresIn: "1h" })
+
+        const cookieval = res.cookie("Cookiename", tokenvar, {
+            maxAge: 5 * 60 * 60 * 1000,
+            httpOnly: true,
+            sameSite: "None",
+            secure: true
+
+
+
+
+        })
+
+
+
+
+        if (!cookieval || !tokenvar) {
+            return res.send("not get cookie")
+        }
+
+
+        newuser.tokenv.push(tokenvar)
+        await newuser.save()
+
+
+
+
+        return res.json({
+            "success": true,
+            "newuser": newuser,
+            "cookie": req.cookies.Cookiename
+
+        })
+
     }
-    const alreadyreg = await regmodel.findOne({email})
-
-    if(alreadyreg)
-    {
-        return res.json({error:'user already registered'})
+    catch (e) {
+        return res.json({ error: "can't register" })
     }
-    const hashpass = await bcrypt.hash(password, 10)
-
-    const newuser = await regmodel.create({ name, email, password: hashpass })
-
-
-
- 
-
-    const tokenvar = jwt.sign({ userid: newuser._id.toString() }, process.env.JWT_SECRET, { expiresIn: "1h" })
-
-    const cookieval = res.cookie("Cookiename", tokenvar, {
-        maxAge: 5 * 60 * 60 * 1000,
-        httpOnly: true,
-        sameSite:"None",
-        secure: true
-
-
-
-
-    })
-
-
-
-
-    if (!cookieval || !tokenvar) {
-        return res.send("not get cookie")
-    }
-
-
-    newuser.tokenv.push(tokenvar)
-    await newuser.save()
-
-   
-
-
-    return res.json({
-        "success": true,
-        "newuser": newuser,
-        "cookie": req.cookies.Cookiename
-
-    })
-
-}
-catch(e)
-{
-    return res.json({error:"can't register"})
-}
 
 }
 
 
 
 
-module.exports.logincontroller = async(req, res) => {
+module.exports.logincontroller = async (req, res) => {
 
     try {
 
@@ -94,15 +93,15 @@ module.exports.logincontroller = async(req, res) => {
             return res.json({ error: "enter both fields" })
         }
 
-          console.log(validator.validate(email) , "my validator ");
-        
-            if (!validator.validate(email)) {
-    return res.status(400).json({ error: "Invalid Email" });
-  }
+        console.log(validator.validate(email), "my validator ");
 
-        if(password.length <6){
+        if(!validator.validate(email)) {
+            return res.status(400).json({ error: "Invalid Email" });
+        }
+
+        if (password.length < 6) {
             return res.status(401).json({ error: "password must be 6 char long" })
-    }
+        }
 
         const loginuser = await regmodel.findOne({ email })
 
@@ -111,13 +110,13 @@ module.exports.logincontroller = async(req, res) => {
         }
 
 
-   
+
 
         const resu = await bcrypt.compare(password, loginuser.password)
 
 
         if (!resu) {
-            return res.json({ error : "invalid credentials" })
+            return res.json({ error: "invalid credentials" })
         }
 
 
@@ -127,8 +126,8 @@ module.exports.logincontroller = async(req, res) => {
         res.cookie("Cookiename", token, {
 
             maxAge: 5 * 60 * 60 * 1000,
-            sameSite: "None", 
-            httpOnly: true, 
+            sameSite: "None",
+            httpOnly: true,
             secure: true
         })
 
@@ -155,12 +154,12 @@ module.exports.logincontroller = async(req, res) => {
         })
 
         const tokendata = jwt.verify(token, "mysecretkey")
-      
+
 
     }
 
     catch (e) {
-      
+
         return res.json({ error: "can't login" })
     }
 }
@@ -179,7 +178,7 @@ module.exports.getAllUsersAdmin = async (req, res) => {
     try {
         const data = await regmodel.find({});
 
-     
+
 
         if (!data) {
             return res.json({ error: "no users found" })
@@ -189,7 +188,7 @@ module.exports.getAllUsersAdmin = async (req, res) => {
 
     }
     catch (e) {
-    
+
         res.json({ error: "can't get user details" })
     }
 
@@ -216,7 +215,7 @@ module.exports.deleteUserAdmin = async (req, res) => {
 
     }
     catch (e) {
-  
+
         res.json({ error: "can't delete user details" })
 
     }
@@ -226,26 +225,24 @@ module.exports.deleteUserAdmin = async (req, res) => {
 
 
 
-module.exports.logoutUserFromAllDevicesAdmin = async(req,res) => {
-    try{
-        const {id} = req.params;
+module.exports.logoutUserFromAllDevicesAdmin = async (req, res) => {
+    try {
+        const { id } = req.params;
 
-        const user = await regmodel.findById({_id:id})
+        const user = await regmodel.findById({ _id: id })
 
-        if(!user)
-        {
-           return res.json({error:"user not found"})
+        if (!user) {
+            return res.json({ error: "user not found" })
         }
 
         user.tokenv = []
 
         await user.save()
 
-       return res.json({success:"user logout from all devices"})
+        return res.json({ success: "user logout from all devices" })
     }
-    catch(e)
-    {
-   return res.json({error:"can't logout user"})
+    catch (e) {
+        return res.json({ error: "can't logout user" })
     }
 }
 
@@ -265,7 +262,7 @@ module.exports.deleteUser = async (req, res) => {
 
         res.clearCookie("Cookiename")
 
-        req.user.tokenv = req.user.tokenv.filter((i)=>{ i !== req.token })
+        req.user.tokenv = req.user.tokenv.filter((i) => { i !== req.token })
 
         await req.user.save()
 
