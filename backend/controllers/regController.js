@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const regmodel = require("../db/regmodel")
 require("dotenv").config()
-import validator from ("email-validator")
+const validator = require("email-validator")
 
 module.exports.regiController = async (req, res) => {
 
