@@ -23,7 +23,7 @@ export const registerAction = (user) => async dispatch => {
 
         else{
              dispatch({type : "USER_REGISTER_SUCCESS" , payload:objres})
-             window.location.href = "/login"
+            //  window.location.href = "/login"
         }
        
     }
@@ -65,7 +65,7 @@ export const loginAction = (user) => async dispatch =>{
 
         localStorage.setItem("curruser" , JSON.stringify(objres.logincreds))
 
-        window.location.href = "/"
+        // window.location.href = "/"
         }
     }
     catch(e){

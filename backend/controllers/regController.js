@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const regmodel = require("../db/regmodel")
 require("dotenv").config()
+
 const validator = require("email-validator")
 
 module.exports.regiController = async (req, res) => {
@@ -19,7 +20,7 @@ module.exports.regiController = async (req, res) => {
 
 
         if(!validator.validate(email)){
-            return res.status(400).json({ error: "Invalid Email" });
+            return res.status(400).json({ "error": "Invalid Email" });
         }
 
         if (password.length < 6) {
@@ -96,9 +97,10 @@ module.exports.logincontroller = async (req, res) => {
         console.log(validator.validate(email), "my validator ");
 
         if(!validator.validate(email)) {
-            return res.status(400).json({ error: "Invalid Email" });
+            return res.status(400).json({ "error": "Invalid Email" }
+           
+            );
         }
-
         if (password.length < 6) {
             return res.status(401).json({ error: "password must be 6 char long" })
         }
@@ -106,7 +108,8 @@ module.exports.logincontroller = async (req, res) => {
         const loginuser = await regmodel.findOne({ email })
 
         if (!loginuser) {
-            return res.json({ "error": "first register" })
+
+            return res.json({"error":"first register" })
         }
 
 

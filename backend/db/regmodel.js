@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-
+const validator = require("email-validator")
 const regSchema = new mongoose.Schema({
     name : {
         type:String,
