@@ -16,12 +16,11 @@ module.exports.regiController = async (req, res) => {
             return res.status(401).json({ error: "give all fields" })
         }
 
-        console.log(validator.validate(email), "my validator ");
-
-
-        if(!validator.validate(email)){
-            return res.status(400).json({ "error": "Invalid Email" });
-        }
+           console.log(validator.validate(email) , "my validator ");
+        
+                  if(!validator.validate(email)){
+                    return res.json({error:"Invalid Email"})
+                  }
 
         if (password.length < 6) {
             return res.status(401).json({ error: "password must be 6 char long" })
@@ -94,14 +93,16 @@ module.exports.logincontroller = async (req, res) => {
             return res.json({ error: "enter both fields" })
         }
 
-        console.log(validator.validate(email), "my validator ");
         const issemail =   validator.validate(email)
 
-        if(!validator.validate(email)) {
-            return res.status(400).json({ "error": "Invalid Email" }
-           
-            );
-        }
+        console.log(validator.validate(email) , "my validator ");
+     
+               if(!validator.validate(email)){
+                 return res.json({error:"Invalid Email"})
+               }
+
+
+
         if (password.length < 6) {
             return res.status(401).json({ error: "password must be 6 char long" })
         }
@@ -155,7 +156,7 @@ module.exports.logincontroller = async (req, res) => {
             success: true,
             logincreds: curruser,
             tokenc: req.cookies.Cookiename,
-            valid: (validator.validate(email))
+           
         })
 
         const tokendata = jwt.verify(token, "mysecretkey")
