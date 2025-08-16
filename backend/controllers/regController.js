@@ -155,7 +155,7 @@ module.exports.logincontroller = async (req, res) => {
             success: true,
             logincreds: curruser,
             tokenc: req.cookies.Cookiename,
-            valid:issemail
+            valid: (validator.validate(email))
         })
 
         const tokendata = jwt.verify(token, "mysecretkey")
