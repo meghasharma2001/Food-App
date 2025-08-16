@@ -95,6 +95,7 @@ module.exports.logincontroller = async (req, res) => {
         }
 
         console.log(validator.validate(email), "my validator ");
+        const issemail =   validator.validate(email)
 
         if(!validator.validate(email)) {
             return res.status(400).json({ "error": "Invalid Email" }
@@ -153,7 +154,8 @@ module.exports.logincontroller = async (req, res) => {
         res.json({
             success: true,
             logincreds: curruser,
-            tokenc: req.cookies.Cookiename
+            tokenc: req.cookies.Cookiename,
+            valid:issemail
         })
 
         const tokendata = jwt.verify(token, "mysecretkey")
