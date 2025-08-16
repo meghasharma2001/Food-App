@@ -10,7 +10,7 @@ const regSchema = new mongoose.Schema({
         require:true,
          validate: {
       validator: (v) => validator.validate(v),
-      error: "Invalid mail ",
+      message: "Invalid mail ",
     },
     },
     password : {
