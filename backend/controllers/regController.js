@@ -16,10 +16,10 @@ try{
     }
 
       console.log(validator.validate(email) , "my validator ");
-    
-         if(!validator.validate(email)){
-                return res.json({error:"Invalid Email"})
-             }
+
+      if (!validator.validate(email)) {
+    return res.status(400).json({ error: "Invalid Email" });
+  }
 
     if(password.length <6){
             return res.status(401).json({ error: "password must be 6 char long" })
@@ -96,10 +96,9 @@ module.exports.logincontroller = async(req, res) => {
 
           console.log(validator.validate(email) , "my validator ");
         
-             if(!validator.validate(email)){
-                    return res.json({error:"Invalid Email"})
-                 }
-
+            if (!validator.validate(email)) {
+    return res.status(400).json({ error: "Invalid Email" });
+  }
 
         if(password.length <6){
             return res.status(401).json({ error: "password must be 6 char long" })

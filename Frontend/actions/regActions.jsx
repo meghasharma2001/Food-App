@@ -15,7 +15,7 @@ export const registerAction = (user) => async dispatch => {
 
         const objres = await resp.json()
 
-  
+  console.log(objres)
 
         if(objres.error){
             dispatch({type : "USER_REGISTER_FAIL" , payload:objres.error})
@@ -52,6 +52,8 @@ export const loginAction = (user) => async dispatch =>{
         })
 
         const objres = await resp.json()
+
+        console.log(objres)
 
         if(objres.error){
             dispatch({type:"USER_LOGIN_FAIL" , payload: objres.error})
