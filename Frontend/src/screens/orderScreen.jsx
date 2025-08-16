@@ -33,7 +33,7 @@ const orderspage = () => {
       {error && <Error error={error} /> }
 
 
-      <div style={{marginBottom: error ? "29vh" : "0px"}}>
+      <div style={{marginBottom: error ? "70vh" : "0px"}}>
         {Array.isArray(userorders) && userorders.length > 0 && userorders.map((i) => {
           return <div className="ordermed">
 
