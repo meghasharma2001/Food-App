@@ -35,7 +35,6 @@ app.use(cors({
 }))
 
 
-
 app.use("/api", pizzaroutes)
 
 app.use("/api/auth", regRoutes)

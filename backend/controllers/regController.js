@@ -8,7 +8,7 @@ const validator = require("validator");
 
 
 module.exports.regiController = async (req, res) => {
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
     try {
         const { name, email, password } = req.body
 
@@ -20,7 +20,7 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
            console.log(validator.isEmail(email), "my validator ");
         
-   if (!emailRegex.test(email)) {
+   if (!validator.isEmail(email)) {
     return res.status(400).json({ error: "Invalid Email" });
   }
 
@@ -86,7 +86,6 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 module.exports.logincontroller = async (req, res) => {
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
     try {
 
@@ -102,7 +101,7 @@ module.exports.logincontroller = async (req, res) => {
         
            console.log(validator.isEmail(email), "my validator ");
         
-    if (!emailRegex.test(email)) {
+    if (!validator.isEmail(email )){
     return res.status(400).json({ error: "Invalid Email" });
   }
 
